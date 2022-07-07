@@ -1,0 +1,40 @@
+.mneu {
+    text-decoration: none;
+    background-color: pink;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+h1 {
+    text-align: center;
+    border-bottom: 1px solid;
+    border-radius: 10px;
+}
+
+h1 > small, h2 > small {
+    font-size: 12px;
+}
+
+.berita {
+    border-radius: 20px;
+    background-color: #eeefde;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.berita .linkDetail {
+    text-align: right;
+}
+
+.berita a {
+    text-decoration: none;
+    background-color: #1bff32;
+    border-radius: 5px;
+    padding: 5px;
+    width: 40px;
+    margin-top: 10px;
+}
+
+.isi_berita h1 {
+    background-color: pink;
+}
