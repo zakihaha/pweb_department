@@ -126,6 +126,7 @@
                                                 <th scope="col">Nama Barang</th>
                                                 <th scope="col">Deskripsi</th>
                                                 <th scope="col">Stok</th>
+                                                <th scope="col">Foto</th>
                                                 <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
@@ -141,8 +142,11 @@
                                                     <td><?php echo $value->deskripsi ?></td>
                                                     <td><?php echo $value->stok ?></td>
                                                     <td>
-                                                        Read 
-                                                        | <a href="#<?php echo $value->id_barang ?>" class="linkHapusBarang">Hapus</a> 
+                                                        <img src="<?php echo base_url() ?>foto/<?php echo $value->id_barang ?>/<?php echo $value->foto_produk ?>" width="50">
+                                                    </td>
+                                                    <td>
+                                                        Read
+                                                        | <a href="#<?php echo $value->id_barang ?>" class="linkHapusBarang">Hapus</a>
                                                         | <a href="#<?php echo $value->id_barang ?>" class="linkEditBarang">Edit</a></td>
                                                 </tr>
                                             <?php
@@ -176,36 +180,6 @@
                 </footer>
             </div>
         </div>
-
-        <!-- <script>
-            $("#btn-cari").on("click", function() {
-                cariData()
-            })
-            
-            function cariData() {
-                console.log('click');
-                var url = 'http://localhost/web_lanjut/departmen/index.php/Barang/cari_barang';
-                var dataForm = {}
-                var allInput = $('.form-input-cari')
-
-                $.each(allInput, function(index, value) {
-                    dataForm[value['name']] = value['value'];
-                })
-
-                $.ajax(url, {
-                    type: "POST",
-                    data: dataForm,
-                    success: function(data, status, xhr) {
-                        var objData = JSON.parse(data);
-                        $("#tabel_barang").html(objData.konten);
-                        reloadEvent();
-                    },
-                    error: function(jqXHR, textStatus, errorMsg) {
-                        alert("Error: " + errorMsg);
-                    }
-                });
-            }
-        </script> -->
 </body>
 
 </html>

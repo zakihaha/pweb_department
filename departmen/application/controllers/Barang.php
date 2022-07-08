@@ -54,21 +54,67 @@ class Barang extends CI_Controller
 
         $this->Barang_model->insert_data($arr_input);
 
+        // if ($this->db->trans_status() === FALSE) {
+        //     $this->db->trans_rollback();
+        //     $data_output = array(
+        //         'sukses' => 'tidak',
+        //         'pesan' => 'Gagal Input Data Barang',
+        //     );
+        // } else {
+        //     $this->db->trans_commit();
+        //     $data_output = array(
+        //         'sukses' => 'ya',
+        //         'pesan' => 'Berhasil Input Data Barang',
+        //     );
+        // }
+
+        // echo json_encode($data_output);
+
+        $id_barang = $this->db->insert_id();
+        // if ($_FILES != null) {
+            $this->upload_foto($id_barang, $_FILES);
+        // }
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
-            $data_output = array(
-                'sukses' => 'tidak',
-                'pesan' => 'Gagal Input Data Barang',
-            );
+            $data_output = array('sukses' => 'tidak', 'pesan' => 'Gagal Input Data Barang');
         } else {
             $this->db->trans_commit();
-            $data_output = array(
-                'sukses' => 'ya',
-                'pesan' => 'Berhasil Input Data Barang',
-            );
+            $data_output = array('sukses' => 'ya', 'pesan' => 'Berhasil Input Data Barang');
         }
-
         echo json_encode($data_output);
+    }
+
+    public function upload_foto($id_barang, $files)
+    {
+        $gallerPath = './foto';
+
+        $path = $gallerPath . '/' . $id_barang;
+        
+        if (!is_dir($path)) {
+            mkdir($path, 0777, TRUE);
+        }
+        $konfigurasi = array(
+            'allowed_types' => 'jpg|png|jpeg',
+            'upload_path' => $path,
+            'overwrite' => true
+        );
+
+        $this->load->library('upload', $konfigurasi);
+
+        $_FILES['file']['name'] = $files['file']['name'];
+        $_FILES['file']['type'] = $files['file']['type'];
+        $_FILES['file']['tmp_name'] = $files['file']['tmp_name'];
+        $_FILES['file']['error'] = $files['file']['error'];
+        $_FILES['file']['size'] = $files['file']['size'];
+        if ($this->upload->do_upload('file')) {
+            $data_barang = array(
+                'foto_produk' => $this->upload->data('file_name')
+            );
+            $this->Barang_model->update_data($id_barang, $data_barang);
+            return 'Success Upload';
+        } else {
+            return 'Error Upload';
+        }
     }
 
     public function form_edit($id_barang)
@@ -119,20 +165,32 @@ class Barang extends CI_Controller
 
         $this->Barang_model->update_data($id_barang, $arr_input);
 
+        // if ($this->db->trans_status() === FALSE) {
+        //     $this->db->trans_rollback();
+        //     $data_output = array(
+        //         'sukses' => 'tidak',
+        //         'pesan' => 'Gagal Update Data Barang',
+        //     );
+        // } else {
+        //     $this->db->trans_commit();
+        //     $data_output = array(
+        //         'sukses' => 'ya',
+        //         'pesan' => 'Berhasil Update Data Barang',
+        //     );
+        // }
+
+        // echo json_encode($data_output);
+
+        if ($_FILES != null) {
+            $this->upload_foto($id_barang, $_FILES);
+        }
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
-            $data_output = array(
-                'sukses' => 'tidak',
-                'pesan' => 'Gagal Update Data Barang',
-            );
+            $data_output = array('sukses' => 'tidak', 'pesan' => 'Gagal Update Data Barang');
         } else {
             $this->db->trans_commit();
-            $data_output = array(
-                'sukses' => 'ya',
-                'pesan' => 'Berhasil Update Data Barang',
-            );
+            $data_output = array('sukses' => 'ya', 'pesan' => 'Berhasil Update Data Barang');
         }
-
         echo json_encode($data_output);
     }
 
