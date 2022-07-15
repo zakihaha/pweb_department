@@ -72,7 +72,7 @@
                         </li>
                         <li class="sidebar-item"> <a class="menu sidebar-link waves-effect waves-dark sidebar-link" href="#barang" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Barang</span></a></li>
                         <li class="sidebar-item"> <a class="menu sidebar-link waves-effect waves-dark sidebar-link" href="#departmen" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Departemen</span></a></li>
-                        <li class="sidebar-item"> <a class="menu sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Pengadaan</span></a></li>
+                        <li class="sidebar-item"> <a class="menu sidebar-link waves-effect waves-dark sidebar-link" href="#login" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Login</span></a></li>
                         <li class="sidebar-item"> <a class="menu sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Peminjaman</span></a></li>
                         <li class="sidebar-item"> <a class="menu sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Laporan Tahunan</span></a></li>
                         <li class="sidebar-item"> <a class="menu sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Laporan Stok</span></a></li>

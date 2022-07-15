@@ -55,6 +55,29 @@ function hapusData(id_barang) {
     });
 }
 
+function checkLogin() {
+    var link = "http://localhost/web_lanjut/departmen/index.php/User/check_login";
+    var dataForm = {};
+    var allInput = $('.form-user-input');
+    $.each(allInput, function(i, val) {
+        dataForm[val['name']] = val['value'];
+    });
+    $.ajax(link, {
+        type: 'POST',
+        data: dataForm,
+        success: function(data, status, xhr) {
+            var data_str = JSON.parse(data);
+            alert(data_str['pesan']);
+            if (data_str['sukses'] == 'Ya') {
+                location.replace('http://localhost/web_lanjut/client_departmen/client_jquery.html');
+            }
+        },
+        error: function(jqXHR, textStatus, errorMsg) {
+            alert('Error : ' + errorMsg);
+        }
+    });
+}
+
 function loadKonten(link) {
     $.ajax(link, {
         type: "GET",
@@ -81,6 +104,9 @@ function convertURL(hash) {
     } else if (hashClean == "barang") {
         console.log('barang');
         url = "http://localhost/web_lanjut/departmen/index.php/Barang/";
+    } else if (hashClean == "login") {
+        console.log('login');
+        url = "http://localhost/web_lanjut/departmen/index.php/Login/";
     }
 
     loadKonten(url);
